@@ -1,6 +1,6 @@
-import { Inhabitant } from "@/Domain/Inhabitant"
+import { Inhabitant } from "@/Domain/Inhabitant";
 
-export abstract class IInhabitantRepository{
+export abstract class IInhabitantRepository {
   abstract findAll(): Array<Inhabitant>;
   abstract persist(inhabitant: Inhabitant): Inhabitant;
 }
