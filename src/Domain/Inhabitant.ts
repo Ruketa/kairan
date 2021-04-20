@@ -1,4 +1,5 @@
 export class Inhabitant{
+  private _id!: number;
   private _family_name!: string;
 
   constructor(family_name:string){
@@ -12,4 +13,5 @@ export class Inhabitant{
   get family_name():string {
     return this._family_name;
   }
+
 }

@@ -1,6 +1,9 @@
 import { Inhabitant } from "@/Domain/Inhabitant";
 import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository"
 
+/*
+* ToDo 永続化は保留で仮実装
+*/
 export class InhabitantRepository extends IInhabitantRepository{
 
   constructor(){
@@ -19,7 +22,9 @@ export class InhabitantRepository extends IInhabitantRepository{
   }
 
   persist(inhabitant: Inhabitant): Inhabitant{
-    return inhabitant 
+    let inhabitants !: Array<Inhabitant>;
+    inhabitants.push(this.createInhabitant("kurihara"))
+    return inhabitants[0] 
   }
 
 }

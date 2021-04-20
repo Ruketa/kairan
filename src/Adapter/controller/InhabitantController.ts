@@ -1,14 +1,21 @@
 import { InhabitantRepository } from "@/Adapter/repository/InhabitantRepository"
 import { ListInhabitans } from "@/UseCase/ListInhabits"
+import { AddInhabitant } from "../UseCase/AddInhabitant"
 
 export class InhabitantController{
-  private inhabitantRepository !: InhabitantRepository
+  private _inhabitantRepository !: InhabitantRepository
 
   constructor(){
-    this.inhabitantRepository = new InhabitantRepository()
+    this._inhabitantRepository = new InhabitantRepository()
   }
 
   findAllInhabitans(){
-    const useCase = new ListInhabitans();
+    const useCase = new ListInhabitans(this._inhabitantRepository);
+    return useCase.execute()
+  }
+
+  addInhabitants(family_name: string){
+    const useCase = new AddInhabitant(this._inhabitantRepository) ;
+    return useCase.execute(family_name)
   }
 }
