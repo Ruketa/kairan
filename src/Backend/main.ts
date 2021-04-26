@@ -1,5 +1,4 @@
-
-import { ServerApp } from "@/Backend/ServerApp"
+import { ServerApp } from "./ServerApp"
 
 class Main {
   constructor() {

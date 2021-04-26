@@ -21,6 +21,4 @@ export class APIGateway extends IDataGateway{
       console.log(response.text())
     })
   }
-  }
-
 }
