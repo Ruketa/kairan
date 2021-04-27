@@ -10,8 +10,6 @@ import { Vue, Prop, Component } from "vue-property-decorator";
 
 import Label from "@/view/components/primitive/Label.vue";
 
-import { Region } from "@/Domain/Region"
-
 @Component({
   components: {
     Label: Label,
@@ -19,8 +17,5 @@ import { Region } from "@/Domain/Region"
 })
 export default class Login extends Vue {
   @Prop() title!: string;
-
-
-
 }
 </script>

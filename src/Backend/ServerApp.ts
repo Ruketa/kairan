@@ -7,6 +7,7 @@ import { RequestHandler } from "./RequestHandler";
 
 export class ServerApp {
   private port!: number;
+  private webServer!: http.Server;
 
   constructor() {
     this.port = 5000;
@@ -20,8 +21,11 @@ export class ServerApp {
     // routing
     server.get("/inhabitant", RequestHandler.inhabitants);
 
-    const webServer = http.createServer(server);
-    webServer.listen(this.port, () => {
+    this.webServer = http.createServer(server);
+  }
+
+  public startServer(): void {
+    this.webServer.listen(this.port, () => {
       console.log("Running at port 5000");
     });
   }

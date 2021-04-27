@@ -1,7 +1,7 @@
 import mariadb from "mariadb";
 
 export class MariaDBConnetion {
-  private pool: any;
+  private pool: mariadb.Pool;
 
   constructor() {
     this.pool = mariadb.createPool({
@@ -15,5 +15,7 @@ export class MariaDBConnetion {
     this.pool.getConnection();
   }
 
-  execute() {}
+  execute(): void {
+    return;
+  }
 }

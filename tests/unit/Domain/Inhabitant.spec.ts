@@ -1,5 +1,4 @@
 import { Inhabitant } from "@/Domain/Inhabitant";
-import Domain from "@/Domain/Inhabitant.vue";
 
 describe("Inhabitant.vue", () => {
   test("set family name", () => {

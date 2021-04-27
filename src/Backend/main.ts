@@ -1,10 +1,17 @@
 import { ServerApp } from "./ServerApp";
 
 class Main {
+  private _ServerApp!: ServerApp;
+
   constructor() {
-    const serverApp = new ServerApp();
-    serverApp.initServer();
+    this._ServerApp = new ServerApp();
+    this._ServerApp.initServer();
+  }
+
+  public Start(): void {
+    this._ServerApp.startServer();
   }
 }
 
 const main = new Main();
+main.Start();

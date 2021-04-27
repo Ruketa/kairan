@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <Title :title="msg"></Title> 
+    <Title :title="msg"></Title>
+    <div><RegionList></RegionList></div>
     <div>
       <ul>
         <li v-for="val in list_contents" :key="val.family_name">
@@ -15,12 +16,14 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { InhabitantController } from "@/Adapter/controller/InhabitantController";
 import { Inhabitant } from "@/Domain/Inhabitant";
-import  Title  from "@/view/components/primitive/Title.vue"
+import Title from "@/view/components/primitive/Title.vue";
+import RegionList from "@/view/components/composite/RegionList.vue";
 
 @Component({
-  components :{
+  components: {
     Title,
-  } 
+    RegionList,
+  },
 })
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;

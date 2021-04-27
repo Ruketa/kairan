@@ -8,7 +8,7 @@ export class APIGateway extends IDataGateway {
     this.baseURI = "http://localhost:5000";
   }
 
-  FetchInhabitantList() {
+  FetchInhabitantList(): void {
     fetch(this.baseURI + "/predict", {
       method: "GET",
       mode: "cors",
