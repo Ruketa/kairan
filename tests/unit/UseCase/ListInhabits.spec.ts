@@ -1,6 +1,6 @@
-import { Inhabitant } from "@/Domain/Inhabitant"
-import { ListInhabits } from "@/UseCase/ListInhabits"
-import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository"
+import { Inhabitant } from "@/Domain/Inhabitant";
+import { ListInhabits } from "@/UseCase/ListInhabits";
+import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
 
 // dummy repository class for test
 class InhabitantRepository_Dummy extends IInhabitantRepository {
@@ -28,22 +28,21 @@ class InhabitantRepository_Dummy extends IInhabitantRepository {
 
 //// test cases
 
-describe("ListInhabits", ()=>{
-  test("repository is empty", ()=>{
-    let addInh = new ListInhabits(new InhabitantRepository_Dummy())
-    const inhs = addInh.execute()
-    expect(inhs.length).toBe(0)
+describe("ListInhabits", () => {
+  test("repository is empty", () => {
+    const addInh = new ListInhabits(new InhabitantRepository_Dummy());
+    const inhs = addInh.execute();
+    expect(inhs.length).toBe(0);
   }),
+    test("executing find all inhabitants from repository", () => {
+      const repo = new InhabitantRepository_Dummy();
+      repo.persist(new Inhabitant("kurihara"));
+      repo.persist(new Inhabitant("tamura"));
 
-  test("executing find all inhabitants from repository", ()=>{
-    let repo = new InhabitantRepository_Dummy()
-    repo.persist(new Inhabitant("kurihara"))
-    repo.persist(new Inhabitant("tamura"))
-
-    let addInh = new ListInhabits(repo)
-    const inhs = addInh.execute()
-    expect(inhs[0].family_name).toMatch("kurihara")
-    expect(inhs[1].family_name).toMatch("tamura")
-    expect(repo.findAll().length).toBe(2)
-  })
-})
+      const addInh = new ListInhabits(repo);
+      const inhs = addInh.execute();
+      expect(inhs[0].family_name).toMatch("kurihara");
+      expect(inhs[1].family_name).toMatch("tamura");
+      expect(repo.findAll().length).toBe(2);
+    });
+});

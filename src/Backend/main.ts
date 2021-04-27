@@ -1,4 +1,4 @@
-import { ServerApp } from "./ServerApp"
+import { ServerApp } from "./ServerApp";
 
 class Main {
   constructor() {

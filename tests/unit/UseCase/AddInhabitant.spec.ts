@@ -1,6 +1,6 @@
-import { Inhabitant } from "@/Domain/Inhabitant"
-import { AddInhabitant } from "@/UseCase/AddInhabitant"
-import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository"
+import { Inhabitant } from "@/Domain/Inhabitant";
+import { AddInhabitant } from "@/UseCase/AddInhabitant";
+import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
 
 // dummy repository class for test
 class InhabitantRepository_Dummy extends IInhabitantRepository {
@@ -28,33 +28,31 @@ class InhabitantRepository_Dummy extends IInhabitantRepository {
 
 //// test cases
 
-describe("AddInhabintant", ()=>{
-  test("execute to add", ()=>{
-    let addInh = new AddInhabitant(new InhabitantRepository_Dummy())
-    const inh = addInh.execute("kurihara")
-    expect(inh.family_name).toMatch("kurihara")
+describe("AddInhabintant", () => {
+  test("execute to add", () => {
+    const addInh = new AddInhabitant(new InhabitantRepository_Dummy());
+    const inh = addInh.execute("kurihara");
+    expect(inh.family_name).toMatch("kurihara");
   }),
+    test("executing add an inhabitant to repository", () => {
+      const repo = new InhabitantRepository_Dummy();
+      const addInh = new AddInhabitant(repo);
+      const inh = addInh.execute("kurihara");
+      expect(inh.family_name).toMatch("kurihara");
+      expect(repo.findAll().length).toBe(1);
+    }),
+    test("executing add inhabitants to repository", () => {
+      const repo = new InhabitantRepository_Dummy();
+      const addInh = new AddInhabitant(repo);
+      let inh = addInh.execute("kurihara");
+      expect(inh.family_name).toMatch("kurihara");
 
-  test("executing add an inhabitant to repository", ()=>{
-    let repo = new InhabitantRepository_Dummy()
-    let addInh = new AddInhabitant(repo)
-    const inh = addInh.execute("kurihara")
-    expect(inh.family_name).toMatch("kurihara")
-    expect(repo.findAll().length).toBe(1)
-  }),
+      inh = addInh.execute("tamura");
+      expect(inh.family_name).toMatch("tamura");
 
- test("executing add inhabitants to repository", ()=>{
-    let repo = new InhabitantRepository_Dummy()
-    let addInh = new AddInhabitant(repo)
-    let inh = addInh.execute("kurihara")
-    expect(inh.family_name).toMatch("kurihara")
-
-    inh = addInh.execute("tamura")
-    expect(inh.family_name).toMatch("tamura")
-
-    let inhs = repo.findAll()
-    expect(inhs[0].family_name).toMatch("kurihara")
-    expect(inhs[1].family_name).toMatch("tamura")
-    expect(inhs.length).toBe(2)
-  })
-})
+      const inhs = repo.findAll();
+      expect(inhs[0].family_name).toMatch("kurihara");
+      expect(inhs[1].family_name).toMatch("tamura");
+      expect(inhs.length).toBe(2);
+    });
+});

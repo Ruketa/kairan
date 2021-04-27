@@ -1,3 +1,3 @@
-export abstract class IDataGateway{
-  abstract FetchInhabitantList(): any
+export abstract class IDataGateway {
+  abstract FetchInhabitantList(): any;
 }

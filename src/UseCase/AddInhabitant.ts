@@ -8,7 +8,12 @@ export class AddInhabitant {
     this.inhabitantRepository = inhabitantRepository;
   }
 
-  execute(family_name: string) {
+  /**
+   * @brief 住民情報追加実行
+   * @param {String}  family_name   [in]  家族名
+   * @returns 住民情報
+   */
+  execute(family_name: string): Inhabitant {
     const inhabitant = new Inhabitant(family_name);
     return this.inhabitantRepository.persist(inhabitant);
   }

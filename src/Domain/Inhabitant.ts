@@ -8,9 +8,9 @@ export class Inhabitant {
   /** 家族名称 */
   private _family_name!: string;
 
-  /** 
-   * コンストラクタ 
-   * 
+  /**
+   * コンストラクタ
+   *
    * @param   {String}  name  [in]  家族名称
    * */
   constructor(family_name: string) {
@@ -19,7 +19,7 @@ export class Inhabitant {
 
   /**
    * 家族名称設定
-   * 
+   *
    * @param   {String}  name  [in]  家族名称
    */
   set family_name(name: string) {

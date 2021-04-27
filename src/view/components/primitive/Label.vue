@@ -1,14 +1,14 @@
 <template>
   <div>
-    <a>{{label}}</a>
+    <a>{{ label }}</a>
   </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue, Prop} from "vue-property-decorator"
+import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
-export default class Label extends Vue{
-  @Prop() label !: string
+export default class Label extends Vue {
+  @Prop() label!: string;
 }
 </script>

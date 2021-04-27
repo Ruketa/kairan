@@ -5,12 +5,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component } from "vue-property-decorator"
+import { Vue, Prop, Component } from "vue-property-decorator";
 
 @Component
-export default class Image extends Vue{
-
-  @Prop() source !: string
-  
+export default class Image extends Vue {
+  @Prop() source!: string;
 }
 </script>

@@ -8,6 +8,10 @@ export class ListInhabits {
     this._inhabitantRepository = inhabitantRepository;
   }
 
+  /**
+   * @brief 住民情報リスト取得
+   * @returns 住民情報リスト
+   */
   execute(): Array<Inhabitant> {
     const inhabitants = this._inhabitantRepository.findAll();
     return inhabitants;
