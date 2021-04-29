@@ -1,5 +1,6 @@
 import { TownCommunityDivision } from "@/Domain/TownCommunityDivision"
 import { Inhabitant } from "@/Domain/Inhabitant"
+import { KairanBoard } from "@/Domain/KairanBoard";
 
 /**
  * @class TownCommunity
@@ -14,15 +15,20 @@ export class TownCommunity{
   private _inhabitants!: Array<Inhabitant>
   /** 町内会区分け割り当て */
   private _division_assign_map!: Map<Inhabitant, TownCommunityDivision>
+  /** 回覧板 */
+  private _kairan_board!: KairanBoard;
 
   /**
    * コンストラクタ
    *
-   * @param   {String}  name  [in]  町内会名
+   * @param   {number}  community_id    [in]  町内会ID
+   * @param   {String}  community_name  [in]  町内会名
    */
-  constructor(community_name: string){
+  constructor(community_id:number, community_name: string){
+    this._id = community_id;
     this._community_name = community_name;
     this._division_assign_map = new Map<Inhabitant, TownCommunityDivision>()
+    this._kairan_board = new KairanBoard(community_id, [])
   }
 
   /**
@@ -52,6 +58,7 @@ export class TownCommunity{
     if(division){
       this.AssignToDivision(inhabitant, division);
     }
+    this._kairan_board.AddInhabitantId(inhabitant.id)
   }
 
   /**

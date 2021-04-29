@@ -1,10 +1,10 @@
-import { Inhabitant } from "@/Domain/Inhabitant";
-
 /**
  * @class BoardContents
  * @brief 回覧板コンテンツ クラス 
  */
 export class BoardContents{
+  /** 回覧ドキュメントタイトル */
+  private _document_title!: string;
   /** 回覧ドキュメントパス */
   private _document_path!: string;
   /** 回覧開始日 */
@@ -12,16 +12,16 @@ export class BoardContents{
   /** 回覧終了日 */
   private _end_date!: Date; 
   /** 回覧資料確認状況 */
-  private _contents_check_stats!: Map<Inhabitant, boolean>
+  private _contents_check_stats!: Map<number, boolean>
 
   /**
    * コンストラクタ
    * 
-   * @param   {Array<Inhabitant>}  _Inhabitants [in] 回覧対象住民リスト
+   * @param   {Array<number>}  _InhabitantIds [in] 回覧対象住民IDリスト
    */
-  constructor(inhabitants: Array<Inhabitant>){
-    inhabitants.forEach(inhabitant =>{
-      this._contents_check_stats.set(inhabitant, false);
+  constructor(inhabitantIds: Array<number>){
+    inhabitantIds.forEach(inhabitantId =>{
+      this._contents_check_stats.set(inhabitantId, false);
     })
   }
 
@@ -58,13 +58,23 @@ export class BoardContents{
   }
 
   /**
+   * 回覧資料の登録 
+   * @param   {string}  content_title [in]  回覧資料タイトル
+   * @param   {string}  content_path  [in]  回覧資料パス
+   */
+  public RegisterBoardContent(content_title:string, content_path:string):void{
+    this._document_title = content_title
+    this._document_path = content_path
+  }
+
+  /**
    * 確認状態更新
    * 
-   * @param   {Inhabitant}  inhabitant  [in]  確認住民
+   * @param   {number}  inhabitantId  [in]  確認住民ID
    */
-  public UpdateContentsCheckStatus(inhabitant: Inhabitant){
+  public UpdateContentsCheckStatus(inhabitantId: number){
     this._contents_check_stats.forEach((value, key)=>{
-      if(key.family_name === inhabitant.family_name){
+      if(key === inhabitantId){
         value = true;
       }
     })

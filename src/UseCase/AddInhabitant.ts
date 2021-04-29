@@ -1,4 +1,5 @@
 import { Inhabitant } from "@/Domain/Inhabitant";
+import { TownCommunityRole } from "@/Domain/TownCommunityRole";
 import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
 
 export class AddInhabitant {
@@ -14,7 +15,7 @@ export class AddInhabitant {
    * @returns 住民情報
    */
   execute(family_name: string): Inhabitant {
-    const inhabitant = new Inhabitant(family_name);
+    const inhabitant = new Inhabitant(family_name, new TownCommunityRole(""));
     return this.inhabitantRepository.persist(inhabitant);
   }
 }

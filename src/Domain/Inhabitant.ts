@@ -23,6 +23,14 @@ export class Inhabitant {
   }
 
   /**
+   * 住民ID取得 
+   * @return 住民ID
+   */
+  get id(): number{
+    return this._id;
+  }
+
+  /**
    * 家族名称設定
    *
    * @param   {String}  name  [in]  家族名称
@@ -50,7 +58,7 @@ export class Inhabitant {
 
   /**
    * ロール取得
-   * @return 家族名称
+   * @return ロール
    */
   get role(): TownCommunityRole{
     return this._role;
