@@ -16,6 +16,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { InhabitantController } from "@/Adapter/controller/InhabitantController";
 import { Inhabitant } from "@/Domain/Inhabitant";
+import { Region } from "@/Domain/Region";
 import Title from "@/view/components/primitive/Title.vue";
 import RegionList from "@/view/components/composite/RegionList.vue";
 
@@ -29,6 +30,7 @@ export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
   private list_contents!: Array<Inhabitant>;
+  private regions!: Array<Region>
 
   created(): void {
     let controller = new InhabitantController();
