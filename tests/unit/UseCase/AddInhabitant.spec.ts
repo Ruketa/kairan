@@ -1,6 +1,7 @@
-import { Inhabitant } from "@/Domain/Inhabitant";
-import { AddInhabitant } from "@/UseCase/AddInhabitant";
-import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
+import { Inhabitant } from "@/Frontend/Domain/Inhabitant";
+import { TownCommunityRole } from "@/Frontend/Domain/TownCommunityRole";
+import { AddInhabitant } from "@/Frontend/UseCase/AddInhabitant";
+import { IInhabitantRepository } from "@/Frontend/UseCase/repository/IInhabitantRepository";
 
 // dummy repository class for test
 class InhabitantRepository_Dummy extends IInhabitantRepository {
@@ -12,7 +13,8 @@ class InhabitantRepository_Dummy extends IInhabitantRepository {
   }
 
   private createInhabitant(family_name: string) {
-    const inhabitant = new Inhabitant(family_name);
+    const role = new TownCommunityRole("");
+    const inhabitant = new Inhabitant(family_name, role);
     return inhabitant;
   }
 

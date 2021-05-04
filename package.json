@@ -4,24 +4,27 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "serve:backend": "node dist/backend/main.js",
     "build": "vue-cli-service build",
-    "build:backend": "tsc -b tsconfig.backend.json",
     "test:unit": "vue-cli-service test:unit",
-    "test:coverage": "vue-cli-service test:unit --coverage",
     "lint": "vue-cli-service lint",
+    "build:backend": "tsc -b tsconfig.backend.json",
+    "serve:backend": "node dist/backend/main.js",
+    "test:coverage": "vue-cli-service test:unit --coverage",
     "typedoc": "typedoc --out ./docs/ ./src/"
   },
   "dependencies": {
     "@types/cors": "^2.8.10",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
+    "firebase": "^8.5.0",
     "http": "*",
     "mariadb": "^2.5.3",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^9.1.2",
-    "vuetify": "^2.4.11"
+    "vue-router": "^3.5.1",
+    "vuetify": "^2.4.11",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
@@ -30,6 +33,7 @@
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "^3.12.1",
     "@vue/cli-service": "^4.1.1",
