@@ -11,4 +11,10 @@ export class RequestHandler {
     response.write({ value: "return value" });
     response.end();
   }
+
+  static authorize(request: any, response: any): void {
+    console.log("Request handler 'authorize' was called");
+    response.send(JSON.stringify({ auth_result: true }));
+    response.end();
+  }
 }

@@ -30,7 +30,7 @@ export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
 
   private list_contents!: Array<Inhabitant>;
-  private regions!: Array<Region>
+  private regions!: Array<Region>;
 
   created(): void {
     let controller = new InhabitantController();

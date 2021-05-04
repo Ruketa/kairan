@@ -1,4 +1,5 @@
 import { Inhabitant } from "@/Domain/Inhabitant";
+import { TownCommunityRole } from "@/Domain/TownCommunityRole";
 import { ListInhabits } from "@/UseCase/ListInhabits";
 import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
 
@@ -12,7 +13,8 @@ class InhabitantRepository_Dummy extends IInhabitantRepository {
   }
 
   private createInhabitant(family_name: string) {
-    const inhabitant = new Inhabitant(family_name);
+    const role = new TownCommunityRole("");
+    const inhabitant = new Inhabitant(family_name, role);
     return inhabitant;
   }
 
@@ -36,8 +38,9 @@ describe("ListInhabits", () => {
   }),
     test("executing find all inhabitants from repository", () => {
       const repo = new InhabitantRepository_Dummy();
-      repo.persist(new Inhabitant("kurihara"));
-      repo.persist(new Inhabitant("tamura"));
+      const role = new TownCommunityRole("");
+      repo.persist(new Inhabitant("kurihara", role));
+      repo.persist(new Inhabitant("tamura", role));
 
       const addInh = new ListInhabits(repo);
       const inhs = addInh.execute();

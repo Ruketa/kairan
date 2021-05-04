@@ -2,7 +2,7 @@
  * @class TownCommunityDivision
  * @brief 町内会区分けクラス
  */
-export class TownCommunityDivision{
+export class TownCommunityDivision {
   /** 区分けID */
   private _id!: number;
   /** 区分け名 */
@@ -10,11 +10,11 @@ export class TownCommunityDivision{
 
   /**
    * コンストラクタ
-   * 
+   *
    * @param {string}  division_name [in]  区分け名
    */
-  constructor(division_name: string){
-    this._division_name = division_name
+  constructor(division_name: string) {
+    this._division_name = division_name;
   }
 
   /**
@@ -23,14 +23,14 @@ export class TownCommunityDivision{
    * @param {number}  id  [in]  区分けID
    */
   set id(id: number) {
-    this._id = id; 
+    this._id = id;
   }
 
   /**
    * 区分けID取得
    * @return 区分けID
    */
-  get id(): number{
+  get id(): number {
     return this._id;
   }
 
@@ -50,5 +50,4 @@ export class TownCommunityDivision{
   get division_name(): string {
     return this._division_name;
   }
-
 }

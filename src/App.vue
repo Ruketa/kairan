@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Kairan App" />
+    <div id="header"></div>
+    <div id="main">
+      <Login class="login"></Login>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./view/pages/HelloWorld.vue";
+import Login from "@/view/pages/Login.vue";
 
 @Component({
   components: {
-    HelloWorld,
+    Login,
   },
 })
 export default class App extends Vue {}
 </script>
 
 <style>
-#app {
+#main {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /*text-align: center;*/
+  color: #96a3b1;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#header {
+  height: 60px;
+  background: #42b983;
 }
 </style>

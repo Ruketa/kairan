@@ -1,11 +1,10 @@
-import { Region } from "@/Domain/Region"
-import { IRegionRepository } from "@/UseCase/repository/IRegionRepository"
+import { Region } from "@/Domain/Region";
+import { IRegionRepository } from "@/UseCase/repository/IRegionRepository";
 
 export class ListRegion {
+  private _regionRepository!: IRegionRepository;
 
-  private _regionRepository !: IRegionRepository
-
-  constructor(regionRepository: IRegionRepository){
+  constructor(regionRepository: IRegionRepository) {
     this._regionRepository = regionRepository;
   }
 
@@ -17,5 +16,4 @@ export class ListRegion {
     const inhabitants = this._regionRepository.findAll();
     return inhabitants;
   }
-
 }

@@ -1,4 +1,4 @@
-import { TownCommunityRole } from "@/Domain/TownCommunityRole"
+import { TownCommunityRole } from "@/Domain/TownCommunityRole";
 /**
  * @class Inhabitant
  * @brief 住民 クラス
@@ -9,24 +9,24 @@ export class Inhabitant {
   /** 家族名称 */
   private _family_name!: string;
   /** 担当ロール */
-  private _role !: TownCommunityRole; 
+  private _role: TownCommunityRole;
 
   /**
    * コンストラクタ
    *
    * @param   {String}  name  [in]  家族名称
-   * @param   {String}  role  [in]  担当ロール 
+   * @param   {String}  role  [in]  担当ロール
    * */
   constructor(family_name: string, role: TownCommunityRole) {
     this._family_name = family_name;
-    this._role = role
+    this._role = role;
   }
 
   /**
-   * 住民ID取得 
+   * 住民ID取得
    * @return 住民ID
    */
-  get id(): number{
+  get id(): number {
     return this._id;
   }
 
@@ -60,8 +60,7 @@ export class Inhabitant {
    * ロール取得
    * @return ロール
    */
-  get role(): TownCommunityRole{
+  get role(): TownCommunityRole {
     return this._role;
   }
-
 }

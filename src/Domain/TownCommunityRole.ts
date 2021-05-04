@@ -2,7 +2,7 @@
  * @class TownCommunityRole
  * @brief 町内会ロール クラス
  */
-export class TownCommunityRole{
+export class TownCommunityRole {
   /** ロール ID */
   private _id!: number;
 
@@ -24,14 +24,14 @@ export class TownCommunityRole{
    * @param   {String}  name  [in]  家族名称
    */
   set id(id: number) {
-    this._id= id;
+    this._id = id;
   }
 
   /**
    * ロールID取得
    * @return ロールID
    */
-  get id(): number{
+  get id(): number {
     return this._id;
   }
 
@@ -42,5 +42,4 @@ export class TownCommunityRole{
   get role(): string {
     return this._role;
   }
-
 }

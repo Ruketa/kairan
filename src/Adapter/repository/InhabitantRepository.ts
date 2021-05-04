@@ -1,4 +1,5 @@
 import { Inhabitant } from "@/Domain/Inhabitant";
+import { TownCommunityRole } from "@/Domain/TownCommunityRole";
 import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
 
 /*
@@ -13,7 +14,8 @@ export class InhabitantRepository extends IInhabitantRepository {
   }
 
   private createInhabitant(family_name: string) {
-    const inhabitant = new Inhabitant(family_name);
+    const role = new TownCommunityRole("");
+    const inhabitant = new Inhabitant(family_name, role);
     return inhabitant;
   }
 

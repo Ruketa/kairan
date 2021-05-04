@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ label }}</h1>
+    <h2 class="sub-title">{{ label }}</h2>
   </div>
 </template>
 
@@ -8,7 +8,13 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class Title extends Vue {
+export default class SubTitle extends Vue {
   @Prop() private label!: string;
 }
 </script>
+
+<style scoped>
+.sub-title {
+  color: #42b983;
+}
+</style>
