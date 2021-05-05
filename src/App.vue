@@ -1,9 +1,8 @@
-t
 <template>
   <div id="app">
     <div id="header"></div>
     <div id="main">
-      <Login class="login"></Login>
+      <router-view />
     </div>
   </div>
 </template>
@@ -22,14 +21,17 @@ export default class App extends Vue {}
 
 <style>
 #main {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*text-align: center;*/
+  /*
+  text-align: center;
   color: #96a3b1;
+  */
+  height: 80vh;
+  color: #2c3e50;
   margin: 0;
   padding: 0;
-  height: 100vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -37,7 +39,7 @@ export default class App extends Vue {}
 }
 
 #header {
-  height: 60px;
+  height: 10vh;
   background: #42b983;
 }
 </style>

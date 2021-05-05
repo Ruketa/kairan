@@ -9,6 +9,13 @@
         </li>
       </ul>
     </div>
+    <div>
+      <div id="card">
+        <div class="container">
+          card component
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,7 +33,7 @@ import RegionList from "@/view/components/composite/RegionList.vue";
     RegionList,
   },
 })
-export default class HelloWorld extends Vue {
+export default class Main extends Vue {
   @Prop() private msg!: string;
 
   private list_contents!: Array<Inhabitant>;
@@ -38,3 +45,17 @@ export default class HelloWorld extends Vue {
   }
 }
 </script>
+
+<style scoped>
+
+#card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+#card:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container{
+  padding: 2px 16px
+}
+</style>
