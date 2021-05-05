@@ -4,6 +4,8 @@ import path from "path";
 import * as http from "http";
 
 import { RequestHandler } from "./RequestHandler";
+import { MariaDBConnetion } from "../DataAccess/MaliaDBConnection";
+import { AccountRepository } from "../Repository/AccountRepository";
 
 export class ServerApp {
   private port!: number;
@@ -14,19 +16,23 @@ export class ServerApp {
   }
 
   public initServer(): void {
+    // create server instance
     const server = express();
     server.use(express.static(path.join(__dirname, "public")));
     server.use(cors({ origin: true }));
     server.use(express.json());
     server.use(express.urlencoded({ extended: true }));
 
+    const connection = new MariaDBConnetion();
+    const accountRepository = new AccountRepository(connection);
+    const requestHandler = new RequestHandler(accountRepository);
+
     // routing
-    server.get("/inhabitant", RequestHandler.inhabitants);
-    server.post("/authorize", RequestHandler.authorize);
-    server.post("/auth", (req, res) => {
-      console.log(req.body);
-      res.send(JSON.stringify({ test_response: "return value" }));
-      res.end();
+    server.get("/inhabitant", (req: any, res: any) => {
+      return requestHandler.inhabitants(req, res);
+    });
+    server.post("/authorize", (req: any, res: any) => {
+      return requestHandler.authorize(req, res);
     });
 
     this.webServer = http.createServer(server);

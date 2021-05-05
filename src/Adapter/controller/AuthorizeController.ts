@@ -10,7 +10,7 @@ export class AuthorizeController {
     );
   }
 
-  public Authorize(account_name: string, password: string): boolean {
+  public Authorize(account_name: string, password: string): Promise<boolean> {
     const usecase = new AccountAuthorize(this._AuthorizeGateway);
     return usecase.execute(account_name, password);
   }

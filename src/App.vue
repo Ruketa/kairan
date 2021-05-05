@@ -1,3 +1,4 @@
+t
 <template>
   <div id="app">
     <div id="header"></div>

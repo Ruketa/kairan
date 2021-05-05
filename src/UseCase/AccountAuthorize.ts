@@ -21,7 +21,7 @@ export class AccountAuthorize {
    *
    * @return 認証結果
    */
-  execute(account_name: string, password: string): boolean {
+  execute(account_name: string, password: string): Promise<boolean> {
     return this._Authorizer.authorize(account_name, password);
   }
 }

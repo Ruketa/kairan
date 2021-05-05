@@ -5,7 +5,6 @@
         'base released': !clicked,
         'base pushed': clicked,
       }"
-
       @mousedown="OnMouseDown"
       @mouseup="OnMouseUp"
       @click="OnClick"
@@ -39,8 +38,9 @@ export default class LoginButton extends Vue {
   }
 
   @Emit("click")
-  OnClick(){return}
-
+  OnClick(): void {
+    return;
+  }
 }
 </script>
 

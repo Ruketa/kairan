@@ -12,19 +12,25 @@ export class WebApiAuthorizeGateway extends IAuthorizeGateway {
     this._ApiUrl = ApiUrl;
   }
 
-  authorize(account_name: string, password: string): boolean {
+  authorize(account_name: string, password: string): Promise<boolean> {
     const request_json = {
       account_name: account_name,
       password: password,
     };
-    fetch(this._ApiUrl, {
+
+    return fetch(this._ApiUrl, {
       method: "POST",
       mode: "cors",
       headers: {
         "content-type": "application/json",
       },
       body: JSON.stringify(request_json),
-    });
-    return true;
+    })
+      .then((res: Response) => {
+        return res.json();
+      })
+      .then((json_data: any) => {
+        return !("error" in json_data);
+      });
   }
 }

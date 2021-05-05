@@ -7,10 +7,11 @@
       <Separator />
     </div>
     <div>
-      <LoginForm 
+      <LoginForm
+        :visibleMessage="visibleMessage"
         @change-password="ChangePassword"
         @change-username="ChangeUsername"
-        @submit="Authorize" 
+        @submit="Authorize"
       />
     </div>
   </div>
@@ -34,19 +35,23 @@ import { AuthorizeController } from "@/Adapter/controller/AuthorizeController";
 export default class Login extends Vue {
   private username!: string;
   private password!: string;
+  private visibleMessage = false;
 
   ChangePassword(pass: string): void {
-    this.password = pass
+    this.password = pass;
   }
 
   ChangeUsername(name: string): void {
-    this.username = name
+    this.username = name;
   }
 
-  Authorize() {
+  Authorize(): void {
     let controller = new AuthorizeController();
-    let result = controller.Authorize(this.username, this.password);
-    console.log(result);
+    controller.Authorize(this.username, this.password).then((res: boolean) => {
+      if (!res) {
+        this.visibleMessage = true;
+      }
+    });
   }
 }
 </script>

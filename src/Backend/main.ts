@@ -1,4 +1,4 @@
-import { ServerApp } from "./ServerApp";
+import { ServerApp } from "./Infrastructure/ServerApp";
 
 class Main {
   private _ServerApp!: ServerApp;

@@ -1,10 +1,8 @@
 <template>
   <div>
-    <a
-      @mousedown="OnMouseDown"
-      @mouseup="OnMouseUp"
-      @click="OnClick"
-      >{{ label }}</a>
+    <a @mousedown="OnMouseDown" @mouseup="OnMouseUp" @click="OnClick">{{
+      label
+    }}</a>
   </div>
 </template>
 
@@ -13,16 +11,21 @@ import { Component, Emit, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Label extends Vue {
-
-  @Prop() label !: string; 
+  @Prop() label!: string;
 
   @Emit("click")
-  OnClick(){return}
+  OnClick(): void {
+    return;
+  }
 
   @Emit("mousedown")
-  OnMouseDown(){return}
+  OnMouseDown(): void {
+    return;
+  }
 
   @Emit("mouseup")
-  OnMouseUp(){return}
+  OnMouseUp(): void {
+    return;
+  }
 }
 </script>
