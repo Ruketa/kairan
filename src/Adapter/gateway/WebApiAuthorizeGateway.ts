@@ -33,4 +33,8 @@ export class WebApiAuthorizeGateway extends IAuthorizeGateway {
         return !("error" in json_data);
       });
   }
+
+  signup(account_name: string, password: string): Promise<boolean> {
+    return new Promise<boolean>(function(){return true});
+  }
 }

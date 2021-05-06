@@ -1,7 +1,14 @@
 <template>
   <div>
-    <div>
-      <SubTitle label="Login" />
+    <div style="display: flex">
+      <SubTitle 
+        :class="{'sign-in-title disable-title': !isSigin, 'sign-in-title': isSigin}" 
+        label="Sign in" 
+        @click="OnClick"/>
+      <SubTitle 
+        :class="{'sign-up-title disable-title': isSigin, 'sign-up-title': !isSigin}" 
+        label="Sign up" 
+        @click="OnClick"/>
     </div>
     <div>
       <LoginItem
@@ -21,7 +28,8 @@
       >
     </div>
     <div>
-      <LoginButton class="login-btn" label="login" @click="OnSubmit" />
+      <LoginButton class="login-btn" label="Sign in" @click="OnSubmit" />
+      <LoginButton class="login-btn" label="Sign up" @click="OnSubmit" />
     </div>
   </div>
 </template>
@@ -44,6 +52,7 @@ export default class LoginForm extends Vue {
 
   private password = "";
   private username = "";
+  private isSigin = true;
 
   @Emit("change-password")
   ChangePassword(): void {
@@ -58,6 +67,11 @@ export default class LoginForm extends Vue {
   @Emit("submit")
   OnSubmit(): void {
     return;
+  }
+
+  OnClick():void{
+    this.isSigin = !this.isSigin
+    return
   }
 }
 </script>
@@ -75,5 +89,17 @@ export default class LoginForm extends Vue {
 }
 .visible {
   visibility: visible;
+}
+
+.disable-title{
+  color: #96a3b1;
+}
+
+.sign-in-title{
+  margin-right:10px;
+}
+
+.sign-up-title{
+  margin-left:10px;
 }
 </style>
