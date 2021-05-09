@@ -1,7 +1,7 @@
-import { Inhabitant } from "@/Domain/Inhabitant";
-import { TownCommunityRole } from "@/Domain/TownCommunityRole";
-import { AddInhabitant } from "@/UseCase/AddInhabitant";
-import { IInhabitantRepository } from "@/UseCase/repository/IInhabitantRepository";
+import { Inhabitant } from "@/Frontend/Domain/Inhabitant";
+import { TownCommunityRole } from "@/Frontend/Domain/TownCommunityRole";
+import { AddInhabitant } from "@/Frontend/UseCase/AddInhabitant";
+import { IInhabitantRepository } from "@/Frontend/UseCase/repository/IInhabitantRepository";
 
 // dummy repository class for test
 class InhabitantRepository_Dummy extends IInhabitantRepository {

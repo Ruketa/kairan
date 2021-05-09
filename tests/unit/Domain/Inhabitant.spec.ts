@@ -1,5 +1,5 @@
-import { Inhabitant } from "@/Domain/Inhabitant";
-import { TownCommunityRole } from "@/Domain/TownCommunityRole";
+import { Inhabitant } from "@/Frontend/Domain/Inhabitant";
+import { TownCommunityRole } from "@/Frontend/Domain/TownCommunityRole";
 
 describe("Inhabitant.vue", () => {
   test("set family name", () => {
