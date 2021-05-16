@@ -6,6 +6,7 @@ import * as http from "http";
 import { RequestHandler } from "./RequestHandler";
 import { MariaDBConnetion } from "../DataAccess/MaliaDBConnection";
 import { AccountRepository } from "../Repository/AccountRepository";
+import { FamilyRepository } from "../Repository/FamilyRepository";
 
 export class ServerApp {
   private port!: number;
@@ -25,12 +26,25 @@ export class ServerApp {
 
     const connection = new MariaDBConnetion();
     const accountRepository = new AccountRepository(connection);
-    const requestHandler = new RequestHandler(accountRepository);
+    const familyRepository = new FamilyRepository(connection);
+    const requestHandler = new RequestHandler(
+      accountRepository,
+      familyRepository
+    );
 
     // routing
-    server.get("/inhabitant", (req: any, res: any) => {
-      return requestHandler.inhabitants(req, res);
-    });
+    server.get(
+      "/inhabitant",
+      (req: http.IncomingMessage, res: http.ServerResponse) => {
+        return requestHandler.inhabitants(req, res);
+      }
+    );
+    server.get(
+      "/families",
+      (req: http.IncomingMessage, res: http.ServerResponse) => {
+        return requestHandler.families(req, res);
+      }
+    );
     server.post("/authorize", (req: any, res: any) => {
       return requestHandler.authorize(req, res);
     });

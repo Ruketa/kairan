@@ -7,8 +7,12 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "types": [
-      "node"
-    ]
+      "node",
+      "reflect-metadata"
+    ],
+    "lib": ["es6"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
   "include": [
     "src/Backend/**/*.ts"

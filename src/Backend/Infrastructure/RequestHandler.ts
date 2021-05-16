@@ -1,14 +1,20 @@
 import * as http from "http";
 import { IAccountRepository } from "./repository/IAccountRepository";
+import { IFamilyRepository } from "./repository/IFamilyRepository";
 
 export class RequestHandler {
-  private _accountRepository: IAccountRepository;
+  private _accountRepository!: IAccountRepository;
+  private _familyRepository!: IFamilyRepository;
 
-  constructor(repository: IAccountRepository) {
-    this._accountRepository = repository;
+  constructor(
+    accountRepository: IAccountRepository,
+    familyRepository: IFamilyRepository
+  ) {
+    this._accountRepository = accountRepository;
+    this._familyRepository = familyRepository;
   }
 
-  inhabitants(
+  public inhabitants(
     request: http.IncomingMessage,
     response: http.ServerResponse
   ): void {
@@ -17,6 +23,26 @@ export class RequestHandler {
     response.writeHead(200, { "Content-Type": "text/json; charset=utf-8" });
     response.write({ value: "return value" });
     response.end();
+  }
+
+  public families(request: any, response: any): Promise<any> {
+    console.log("Request handler 'famillies' was called");
+    return this._familyRepository
+      .findAll()
+      .then((res: any) => {
+        if (!res[0]) {
+          return response.status(404).json({
+            error: {
+              message: "Not found families",
+            },
+          });
+        }
+        return response.send(JSON.stringify(res));
+      })
+      .catch((err: any) => {
+        console.log("error due to " + err);
+        return response.end();
+      });
   }
 
   authorize(request: any, response: any): Promise<any> {
@@ -36,7 +62,7 @@ export class RequestHandler {
 
         return response.send(JSON.stringify(res[0]));
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log("error due to " + err);
         return response.end();
       });

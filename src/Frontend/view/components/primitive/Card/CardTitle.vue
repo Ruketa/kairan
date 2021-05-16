@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>
+    <h3 class="card-title">
       <slot></slot>
-    </h1>
+    </h3>
   </div>
 </template>
 
@@ -10,5 +10,11 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class Title extends Vue {}
+export default class CardTitle extends Vue {}
 </script>
+
+<style scoped>
+.card-title {
+  margin: 0px;
+}
+</style>
