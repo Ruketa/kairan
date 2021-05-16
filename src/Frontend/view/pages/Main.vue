@@ -1,26 +1,31 @@
 <template>
-  <div class="hello">
-    <Title :title="msg"></Title>
-    <div><RegionList></RegionList></div>
-    <div>
-      <ul>
-        <li v-for="val in list_contents" :key="val.family_name">
-          {{ val.family_name }}
-        </li>
-      </ul>
+  <div class="main">
+    <div class="side-contents">
     </div>
-    <div>
-      <div id="list">
-        <div style="background: gray">
-          <img src="@/assets/logo.png" />
-          image
+    <div class="center-contents">
+      <Title>住民リスト</Title>
+      <div class="items">
+        <div class="image-item">
+          <img src="@/assets/logo.png" width="40" height="40"/>
         </div>
-        <div class="container">
+        <div class="disc-item">center</div>
+        <div class="option-item">right</div>
+      </div>
+      <!--
+      <div class="list-item" >
+        <div class="item">
+          <img src="@/assets/logo.png" width="40" height="40"/>
+          <p>image</p>
+        </div>
+        <div class="container item">
           <p>title</p>
           <p>descriptions</p>
         </div>
-        <div style="background: blue">option</div>
+      <div class="item">option</div>
       </div>
+      -->
+    </div>
+    <div class="side-contents">
     </div>
   </div>
 </template>
@@ -31,12 +36,10 @@ import { InhabitantController } from "@/Frontend/Adapter/controller/InhabitantCo
 import { Inhabitant } from "@/Frontend/Domain/Inhabitant";
 import { Region } from "@/Frontend/Domain/Region";
 import Title from "@/Frontend/view/components/primitive/Title.vue";
-import RegionList from "@/Frontend/view/components/composite/RegionList.vue";
 
 @Component({
   components: {
     Title,
-    RegionList,
   },
 })
 export default class Main extends Vue {
@@ -44,6 +47,7 @@ export default class Main extends Vue {
 
   private list_contents!: Array<Inhabitant>;
   private regions!: Array<Region>;
+  private show = true;
 
   created(): void {
     let controller = new InhabitantController();
@@ -53,11 +57,53 @@ export default class Main extends Vue {
 </script>
 
 <style scoped>
-#list {
+
+.main{
+  align-items: center;
+  justify-content: center;
   display: flex;
 }
-.container {
-  background: bisque;
-  padding: 2px 16px;
+
+.list-item{
+  display: flex;
+  margin: 0;
+}
+
+.list-item{
+  width: auto;
+}
+
+.items{
+  display: flex;
+}
+
+.image-item{
+  width: 30%;
+  background: blue;
+}
+
+.disc-item{
+  width: 60%;
+  background: red;
+}
+
+.option-item{
+  width: 10%;
+  background: green;
+}
+
+.center-contents{
+  width: 60%;
+}
+
+.side-contents{
+  width: 20%;
+}
+
+.fade-enter-active, .fade-leave-active{
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
 }
 </style>

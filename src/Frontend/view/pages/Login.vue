@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <Title label="Welcome" />
+      <Title>Welcome</Title>
     </div>
     <div>
       <Separator />
@@ -21,7 +21,7 @@
 import { Vue, Component } from "vue-property-decorator";
 import Title from "@/Frontend/view/components/primitive/Title.vue";
 import Separator from "@/Frontend/view/components/primitive/Separator.vue";
-import LoginForm from "@/Frontend/view/components/composite/LoginForm.vue";
+import LoginForm from "@/Frontend/view/components/assembly/LoginForm.vue";
 
 import { AuthorizeController } from "@/Frontend/Adapter/controller/AuthorizeController";
 
