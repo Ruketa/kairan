@@ -40,5 +40,4 @@ export default class App extends Vue {}
   height: 10vh;
   background: #42b983;
 }
-
 </style>

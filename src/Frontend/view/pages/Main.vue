@@ -1,40 +1,43 @@
 <template>
   <div class="main">
-    <div class="side-contents">
-    </div>
+    <div class="side-contents"></div>
     <div class="center-contents">
-      <Title>住民リスト</Title>
-      <Card
-        title="Title"
-        description="description"
-        icon_src="dog.jpg"
-      ></Card>
+      <Title>回覧状況</Title>
+      <CardList :card_data="card_data"></CardList>
     </div>
-    <div class="side-contents">
-    </div>
+    <div class="side-contents"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { InhabitantController } from "@/Frontend/Adapter/controller/InhabitantController";
 import { Inhabitant } from "@/Frontend/Domain/Inhabitant";
-import { Region } from "@/Frontend/Domain/Region";
 import Title from "@/Frontend/view/components/primitive/Title.vue";
-import Card from "@/Frontend/view/components/component/Card.vue";
+import CardList from "@/Frontend/view/components/assembly/CardList.vue";
 
 @Component({
   components: {
     Title,
-    Card,
+    CardList,
   },
 })
 export default class Main extends Vue {
-  @Prop() private msg!: string;
-
   private list_contents!: Array<Inhabitant>;
-  private regions!: Array<Region>;
-  private show = true;
+  private card_data = [
+    {
+      title: "Title1",
+      description: "description1",
+      icon_src: "dog.jpg",
+      has_board: true,
+    },
+    {
+      title: "Title2",
+      description: "description2",
+      icon_src: "logo.png",
+      has_board: false,
+    },
+  ];
 
   created(): void {
     let controller = new InhabitantController();
@@ -44,27 +47,28 @@ export default class Main extends Vue {
 </script>
 
 <style scoped>
-
-.main{
+.main {
   align-items: top;
   justify-content: center;
   display: flex;
-  background: #F5F5F5;
+  background: #f5f5f5;
   height: 100vh;
 }
 
-.center-contents{
+.center-contents {
   width: 60%;
 }
 
-.side-contents{
+.side-contents {
   width: 20%;
 }
 
-.fade-enter-active, .fade-leave-active{
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to{
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

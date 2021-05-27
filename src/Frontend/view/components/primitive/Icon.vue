@@ -1,13 +1,13 @@
 <template>
   <div>
-    <img :src="this.loadImage()"
-      v-bind:style=
-      "{
+    <img
+      :src="this.loadImage()"
+      v-bind:style="{
         width: size + 'px',
         height: size + 'px',
-        'border-radius': '50%'
+        'border-radius': '50%',
       }"
-     />
+    />
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default class Icon extends Vue {
   @Prop() size!: number;
 
   private loadImage(): any{
-    return require("@/assets/" + this.source)
+    return require("@/assets/" + this.source);
   }
 }
 </script>

@@ -11,11 +11,11 @@ const store = new Vuex.Store({
     authorize: (state) => (state.isAuthorized = true),
     resetAuthState: (state) => (state.isAuthorized = false),
   },
-  getters:{
-    isAutholized(state){
+  getters: {
+    isAutholized(state) {
       return state.isAuthorized;
-    }
-  }
+    },
+  },
 });
 
 export default store;

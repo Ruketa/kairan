@@ -10,12 +10,11 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class CardDescription extends Vue {
-}
+export default class CardDescription extends Vue {}
 </script>
 
 <style scoped>
-.description{
+.description {
   margin: 0px;
 }
 </style>

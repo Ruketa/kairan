@@ -1,14 +1,13 @@
 <template>
   <div>
-    <div class="mark" 
-      v-bind:style=
-        "{
-          background: color,
-          width:size+'px',
-          height:size+'px'
-        }"
-    >
-    </div>
+    <div
+      class="mark"
+      v-bind:style="{
+        background: color,
+        width: size + 'px',
+        height: size + 'px',
+      }"
+    ></div>
   </div>
 </template>
 
@@ -17,13 +16,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Dot extends Vue {
-  @Prop() color !: string;
-  @Prop() size !:number;
+  @Prop() color!: string;
+  @Prop() size!: number;
 }
 </script>
 
 <style scoped>
-.mark{
-  Border-radius: 50%;
+.mark {
+  border-radius: 50%;
 }
 </style>

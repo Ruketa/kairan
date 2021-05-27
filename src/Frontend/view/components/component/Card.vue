@@ -1,17 +1,17 @@
 <template>
   <div class="card-item">
     <div class="image-item">
-      <Icon :source=icon_src size=60></Icon>
+      <Icon :source="icon_src" size="60"></Icon>
     </div>
     <div class="disc-item">
-      <CardTitle>{{title}}</CardTitle>
+      <CardTitle>{{ title }}</CardTitle>
       <Separator></Separator>
       <CardDescription>
-        {{description}}
+        {{ description }}
       </CardDescription>
     </div>
     <div class="option-item">
-      <Dot size=20 color="#00FF00"></Dot>
+      <Dot size="20" color="#00FF00"></Dot>
     </div>
   </div>
 </template>
@@ -25,13 +25,13 @@ import Icon from "@/Frontend/view/components/primitive/Icon.vue";
 import Separator from "@/Frontend/view/components/primitive/Separator.vue";
 
 @Component({
-  components:{
+  components: {
     Separator,
     CardTitle,
     CardDescription,
     Dot,
     Icon,
-  } 
+  },
 })
 export default class Card extends Vue {
   @Prop() icon_src!: string;
@@ -42,8 +42,7 @@ export default class Card extends Vue {
 </script>
 
 <style scoped>
-
-.card-item{
+.card-item {
   display: flex;
   background: white;
   color: #2c3e50;
@@ -52,24 +51,23 @@ export default class Card extends Vue {
   border-radius: 5px;
 }
 
-.image-item{
-  display:flex;
+.image-item {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 15%;
   padding: 10px;
 }
 
-.disc-item{
+.disc-item {
   width: 75%;
   padding: 10px;
 }
 
-.option-item{
-  display:flex;
+.option-item {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 10%;
 }
-
 </style>
